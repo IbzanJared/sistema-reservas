@@ -12,15 +12,11 @@ type Handlers struct {
 }
 
 func GetHandlers(db *gorm.DB) Handlers {
-
 	repoReserva := repository.NewReservaRepository(db)
-
 	// - service
 	serviceReserva := service.NewReservaService(repoReserva)
-
 	// - handler
 	handlerReserva := reservaHandler.NewReservaHandler(serviceReserva)
-
 	return Handlers{
 		ReservaHandler: handlerReserva,
 	}
